@@ -2,7 +2,7 @@ import  { useEffect } from 'react';
 import OvenPlayer from 'ovenplayer';
 
 
-function Stream() {
+function Stream({uavNumber}) {
   useEffect(() => {
     // Initialize OvenPlayer
     const player = OvenPlayer.create('player_id', {
@@ -10,7 +10,7 @@ function Stream() {
         {
           label: 'label_for_webrtc',
           type: 'webrtc',
-          file: 'ws://13.38.173.241:3333/app/1',
+          file: `ws://13.38.173.241:3333/app/${uavNumber}`,
         },
       ],
     });
