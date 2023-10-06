@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.navLink {
+  position: relative;
+  display: inline-block;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #00B4D8;
+  transition: width 0.3s ease-in-out;
+}
+
+.navLink.active::before {
+  width: 100%;
+}
+
+
+
+.overlayBg {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+body {
+  background-color: #F8F8F8
+}
