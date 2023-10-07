@@ -3,13 +3,15 @@ import DroneCard from "./DroneCard";
 import AddDronPopUp from "./AddDronPopUp";
 
 const Drones = ({ drons, setInfo, info }) => {
+  const [isInfoShown, setIsInfoShown] = useState(false);
+
   const [menu, setMenu] = useState(false);
   const [addDronPopUp, setAddDronPopUp] = useState(false);
 
   return (
     <>
-      <div className="w-full h-[200px] absolute bottom-14 bg-white overflow-y-scroll">
-        <div className="text-right px-6 py-2">
+      <div className="w-full lg:w-[20%] lg:top-14 h-[200px] lg:h-full absolute bottom-14 bg-white overflow-y-scroll">
+        <div className="text-right px-6 py-2 lg:cursor-pointer">
           <button
             onClick={() => setAddDronPopUp(true)}
             className="text-right bg-[#00B4D8] text-white py-2 px-4 rounded-xl "

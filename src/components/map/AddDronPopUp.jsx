@@ -32,7 +32,7 @@ const AddDronPopUp = ({ setAddDronPopUp }) => {
 
   return (
     <div className="overlayBg fixed top-0 left-0 z-50 right-0 bottom-0 flex justify-center items-center w-full h-[100vh]">
-      <div className="w-[90%] rounded-lg mx-auto h-[200px] bg-[#f8f3f3] flex flex-col items-center justify-center gap-4">
+      <div className="w-[90%] rounded-lg mx-auto lg:w-[30%] h-[200px] bg-[#f8f3f3] flex flex-col items-center justify-center gap-4">
         <h2 className="text-[#0077B6] text-center text-xl font-semibold">
           Add UAV
         </h2>

@@ -1,18 +1,22 @@
 import Map, { Marker, ScaleControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useState } from "react";
-import PopUp from "../components/maps/PopUp";
 import * as mqtt from "mqtt/dist/mqtt.min";
 import Drones from "../components/map/Drones";
 import droneIcon from "../assets/imgs/droneIcon.svg";
 import PopUpContent from "../components/map/PopUpContent";
 
 const MapPage = () => {
-  const [showPopUp, setShowPopUp] = useState(false);
-
   const [drons, setDrons] = useState([]);
   const [error, setError] = useState(false);
-  const [info, setInfo] = useState(false);
+  const [isInfoShown, setIsInfoShown] = useState(false);
+  const [viewPort, setViewPort] = useState({
+    longitude: 115,
+    latitude: 0,
+    zoom: 10,
+    width: "100vw",
+    height: "90vh",
+  });
 
   useEffect(() => {
     const getDrons = async () => {
@@ -72,11 +76,11 @@ const MapPage = () => {
 
   return (
     <section
-      className={`w-full h-[100vh] overflow-x-hidden sm:bg-red-300 xs:bg-red-950 xs2:bg-blue-3 md:bg-green-300`}
+      className={`w-full h-[100vh] lg:flex overflow-x-hidden  lg:flex-row-reverse`}
     >
       {error && <h2>error</h2>}
       {drons && (
-        <div className="relative w-full h-[100vh]">
+        <div className="relative w-full h-[100vh] lg:w-[80%] lg:ml-auto ">
           <Map
             mapboxAccessToken={import.meta.env.VITE_ACCESS_TOKEN}
             initialViewState={{
@@ -86,6 +90,11 @@ const MapPage = () => {
               width: "100vw",
               height: "100vh",
             }}
+            {...viewPort}
+            onPitch={({ viewState }) => setViewPort(viewState)}
+            onDrag={({ viewState }) => setViewPort(viewState)}
+            onRotate={({ viewState }) => setViewPort(viewState)}
+            onZoom={({ viewState }) => setViewPort(viewState)}
             mapStyle="mapbox://styles/mapbox/streets-v9"
           >
             {drons.map((drone) =>
@@ -98,9 +107,15 @@ const MapPage = () => {
                   >
                     <img src={droneIcon} className="w-10 h-auto" alt="" />
                   </Marker>
-                  {info && (
-                    <div className="absolute top-0 left-0 right-0 bottom-0 overlayBgMap z-40">
-                      <PopUpContent selectedDrone={drone} setInfo={setInfo} />
+                  {isInfoShown && (
+                    <div
+                      key={drone.uav_id}
+                      className="absolute  top-0 left-0 right-0 bottom-0 overlayBgMap z-40"
+                    >
+                      <PopUpContent
+                        selectedDrone={drone}
+                        setIsInfoShown={setIsInfoShown}
+                      />
                     </div>
                   )}
                 </>
@@ -109,12 +124,16 @@ const MapPage = () => {
 
             <ScaleControl unit="metric" position="top-right" />
           </Map>
-          <div className="">
-            <Drones drons={drons} info={info} setInfo={setInfo} />
+          <div className="lg:hidden">
+            <Drones drons={drons} info={isInfoShown} setInfo={setIsInfoShown} />
           </div>
-          {showPopUp && <PopUp setShowPopUp={setShowPopUp} />}
         </div>
       )}
+      <div className="w-[20%] h-full">
+        <div className="hidden lg:block">
+          <Drones drons={drons} info={isInfoShown} setInfo={setIsInfoShown} />
+        </div>
+      </div>
     </section>
   );
 };

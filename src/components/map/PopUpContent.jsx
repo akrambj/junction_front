@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PopUpContent = ({ selectedDrone, setInfo }) => {
   return (
-    <div className="w-full absolute bottom-0  rounded-[25px]  h-[70vh] bg-white z-50 ">
+    <div className="w-full absolute bottom-0  lg:top-0 lg:left-0 lg:translate-x-[80%] lg:translate-y-[40%] lg:text-center lg:w-[40%] lg:mx-auto lg:h-[350px] lg:rounded-md  rounded-[25px]  h-[70vh] bg-white z-50 lg:z-30">
       <FontAwesomeIcon
-        className="absolute right-5 text-3xl top-5"
+        className="absolute right-5 text-3xl top-5 lg:cursor-pointer"
         icon={faXmark}
         onClick={() => setInfo(false)}
       />

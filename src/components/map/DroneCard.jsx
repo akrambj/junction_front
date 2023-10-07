@@ -17,10 +17,10 @@ const DroneCard = ({ drone, setMenu, menu, info, setInfo }) => {
   }, []);
 
   return (
-    <div className="border-b-2 border-[#eee]  p-2">
+    <div className="border-b-2 border-[#eee] p-2 hover:bg-gray-200 duration-300 transition-all lg:rounded-md">
       <div
         onClick={() => setMenu((prev) => !prev)}
-        className="flex items-center justify-between px-2"
+        className="flex items-center justify-between px-2 lg:cursor-pointer"
       >
         <div className="flex items-center gap-x-2">
           <svg
@@ -54,16 +54,29 @@ const DroneCard = ({ drone, setMenu, menu, info, setInfo }) => {
         </div>
       </div>
       <div
-        className={`${
-          menu ? "opacity-100 " : "opacity-0"
-        } py-3 duration-300 transition-all flex items-center justify-end gap-x-5`}
+        className={`hidden py-3 duration-300 transition-all lg:flex items-center justify-end gap-x-5`}
       >
-        <button className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm">
+        <button className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2">
           get location
         </button>
         <button
           onClick={() => setInfo(true)}
-          className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm"
+          className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2"
+        >
+          get infos
+        </button>
+      </div>
+      <div
+        className={`${
+          menu ? "opacity-100 " : "opacity-0"
+        } py-3 duration-300 transition-all flex items-center justify-end gap-x-5 lg:hidden`}
+      >
+        <button className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2">
+          get location
+        </button>
+        <button
+          onClick={() => setInfo(drone)}
+          className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2"
         >
           get infos
         </button>
