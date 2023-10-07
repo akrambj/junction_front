@@ -2,9 +2,7 @@ import { useState } from "react";
 import DroneCard from "./DroneCard";
 import AddDronPopUp from "./AddDronPopUp";
 
-const Drones = ({ drons, setInfo, info }) => {
-  const [isInfoShown, setIsInfoShown] = useState(false);
-
+const Drones = ({ drons, setInfo, info, setSelectedDrone }) => {
   const [menu, setMenu] = useState(false);
   const [addDronPopUp, setAddDronPopUp] = useState(false);
 
@@ -40,6 +38,7 @@ const Drones = ({ drons, setInfo, info }) => {
                   menu={menu}
                   setInfo={setInfo}
                   info={info}
+                  setSelectedDrone={setSelectedDrone}
                 />
               </div>
             );

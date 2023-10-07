@@ -2,7 +2,14 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-const DroneCard = ({ drone, setMenu, menu, info, setInfo }) => {
+const DroneCard = ({
+  drone,
+  setMenu,
+  menu,
+  info,
+  setInfo,
+  setSelectedDrone,
+}) => {
   const [color, setColor] = useState("");
   const getRandomColor = () => {
     const r = Math.random() * 255;
@@ -60,7 +67,10 @@ const DroneCard = ({ drone, setMenu, menu, info, setInfo }) => {
           get location
         </button>
         <button
-          onClick={() => setInfo(true)}
+          onClick={() => {
+            setInfo(true);
+            setSelectedDrone(drone);
+          }}
           className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2"
         >
           get infos

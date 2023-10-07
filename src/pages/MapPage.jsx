@@ -10,6 +10,7 @@ const MapPage = () => {
   const [drons, setDrons] = useState([]);
   const [error, setError] = useState(false);
   const [isInfoShown, setIsInfoShown] = useState(false);
+  const [selectedDrone, setSelectedDrone] = useState(null);
   const [viewPort, setViewPort] = useState({
     longitude: 115,
     latitude: 0,
@@ -113,7 +114,7 @@ const MapPage = () => {
                       className="absolute  top-0 left-0 right-0 bottom-0 overlayBgMap z-40"
                     >
                       <PopUpContent
-                        selectedDrone={drone}
+                        selectedDrone={selectedDrone}
                         setIsInfoShown={setIsInfoShown}
                       />
                     </div>
@@ -125,13 +126,23 @@ const MapPage = () => {
             <ScaleControl unit="metric" position="top-right" />
           </Map>
           <div className="lg:hidden">
-            <Drones drons={drons} info={isInfoShown} setInfo={setIsInfoShown} />
+            <Drones
+              setSelectedDrone={setSelectedDrone}
+              drons={drons}
+              info={isInfoShown}
+              setInfo={setIsInfoShown}
+            />
           </div>
         </div>
       )}
       <div className="w-[20%] h-full">
         <div className="hidden lg:block">
-          <Drones drons={drons} info={isInfoShown} setInfo={setIsInfoShown} />
+          <Drones
+            drons={drons}
+            info={isInfoShown}
+            setInfo={setIsInfoShown}
+            setSelectedDrone={setSelectedDrone}
+          />
         </div>
       </div>
     </section>
