@@ -36,7 +36,11 @@ const Header = () => {
           />
         </div>
         {isMenuOpen && (
-          <ul className="w-[60%] h-[100vh] transition-all duration-300 bg-[#F8F8F8] rounded-tl-[40px] absolute right-0 top-0 text-right py-5 flex flex-col gap-y-5 xs:gap-7">
+          <ul
+            className={`${
+              isMenuOpen ? "opacity-100" : "opacity-0"
+            }  w-[65%]  h-[100vh] transition-all duration-300 bg-[#F8F8F8] rounded-tl-[25px] absolute right-0 top-0 text-right py-5 flex flex-col gap-y-5 xs:gap-7`}
+          >
             <li className="text-[#00B4D8] text-3xl px-2">
               <FontAwesomeIcon icon={faXmark} onClick={handleCloseMenu} />
             </li>
@@ -67,6 +71,18 @@ const Header = () => {
                 map
               </NavLink>
             </li>
+            <li className="">
+              <NavLink
+                to={"track"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "navLink lg:active bg-[#00B4D8] xs:text-lg xs2:text-xl  w-[80%] text-center py-1 rounded-l-md text-white text-sm lg:text-lg font-bold capitalize"
+                    : "navLink text-black font-bold  xs:text-lg xs2:text-xl w-[80%] text-center"
+                }
+              >
+                track
+              </NavLink>
+            </li>
           </ul>
         )}
       </nav>
@@ -94,6 +110,18 @@ const Header = () => {
               }
             >
               map
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink
+              to={"track"}
+              className={({ isActive }) =>
+                isActive
+                  ? "navLink active  text-black text-lg  font-bold capitalize"
+                  : "navLink text-[#C9C4C4] text-lg capitalize"
+              }
+            >
+              track
             </NavLink>
           </li>
         </ul>
