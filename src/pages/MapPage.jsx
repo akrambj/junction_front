@@ -116,6 +116,7 @@ const MapPage = () => {
                       <PopUpContent
                         selectedDrone={selectedDrone}
                         setIsInfoShown={setIsInfoShown}
+                        setSelectedDrone={setSelectedDrone}
                       />
                     </div>
                   )}

@@ -32,8 +32,6 @@ function Track() {
       });
     };
     getHistory();
-
-    console.log("fetch");
   }, [uavId, startTimestamp, endTimestamp]);
 
   useEffect(() => {
@@ -115,9 +113,6 @@ function Track() {
         onDrag={({ viewState }) => setViewPort(viewState)}
         onRotate={({ viewState }) => setViewPort(viewState)}
         onZoom={({ viewState }) => setViewPort(viewState)}
-        onViewportChange={() => {
-          console.log("change");
-        }}
         style={{ width: "100vw", height: "100vh" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >

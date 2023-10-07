@@ -9,7 +9,6 @@ const Header = () => {
 
   const handleOpeMenu = () => {
     setIsMenuOpen(true);
-    console.log("hello");
   };
 
   const handleCloseMenu = () => {

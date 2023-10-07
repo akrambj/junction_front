@@ -85,7 +85,10 @@ const DroneCard = ({
           get location
         </button>
         <button
-          onClick={() => setInfo(drone)}
+          onClick={() => {
+            setInfo(drone);
+            setSelectedDrone(drone);
+          }}
           className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2"
         >
           get infos
