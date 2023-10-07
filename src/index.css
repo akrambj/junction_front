@@ -30,7 +30,6 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-
-body {
-  background-color: #F8F8F8
+.overlayBgMap {
+  background-color: rgba(0, 0, 0, 0.2);
 }

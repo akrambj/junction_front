@@ -7,14 +7,7 @@ import Drones from "../components/map/Drones";
 
 const MapPage = () => {
   const [showPopUp, setShowPopUp] = useState(false);
-  const [positionUAV1, setPositionUAV1] = useState({
-    longitude: 115.47,
-    latitude: -8.75,
-  });
-  const [positionUAV2, setPositionUAV2] = useState({
-    longitude: 15.2,
-    latitude: -24.7,
-  });
+
   const [drons, setDrons] = useState([]);
   const [error, setError] = useState(false);
 
@@ -23,10 +16,8 @@ const MapPage = () => {
       try {
         const response = await fetch("http://10.16.26.47:3001/uav-list");
 
-        // Debugging step
         const textData = await response.text();
 
-        // Check if response was successful
         if (response.ok) {
           setDrons(JSON.parse(textData));
         } else {
@@ -98,7 +89,7 @@ const MapPage = () => {
                   latitude={drone.lat}
                   key={drone.uav_id}
                 >
-                  <h1 className="text-7xl text-green-600">X</h1>
+                  <h1 className="text-sm text-green-600">{drone.uav_id}</h1>
                 </Marker>
               ) : null
             )}

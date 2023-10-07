@@ -4,6 +4,7 @@ import aboutDrone from "../assets/imgs/aboutDrone.svg";
 import earth from "../assets/imgs/earth.svg";
 import aboutClouds from "../assets/imgs/aboutClouds.svg";
 import Effects from "../sections/home/Effects";
+import Stream from "../components/map/Stream";
 
 const Home = () => {
   return (
@@ -27,6 +28,9 @@ const Home = () => {
           }
         />
         <Effects />
+        <div className="bg-red-300">
+          <Stream uavNumber={1} />
+        </div>
       </div>
     </main>
   );
