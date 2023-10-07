@@ -1,6 +1,7 @@
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DroneCard = ({ drone, setMenu, menu, setInfo, setSelectedDrone }) => {
   const [color, setColor] = useState("");
@@ -52,7 +53,9 @@ const DroneCard = ({ drone, setMenu, menu, setInfo, setSelectedDrone }) => {
             }`}
           ></div>
           <div className="w-6 h-6 rounded-full bg-gray-200 flex justify-center items-center p-4">
-            <FontAwesomeIcon icon={faVideo} className="" />
+            <Link to={`/stream/${Math.ceil(Math.random() * 2)}`}>
+              <FontAwesomeIcon icon={faVideo} className="" />
+            </Link>
           </div>
         </div>
       </div>
