@@ -16,6 +16,7 @@ function Track() {
     width: "100vw",
     height: "90vh",
   });
+  const [selectedDuration, setSelectedDuration] = useState("15");
 
   useEffect(() => {
     const apiUrl = `http://10.16.26.47:3001/uav-data?uavId=${uavId}&startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}`;
@@ -69,7 +70,11 @@ function Track() {
           <label style={{ fontWeight: 600 }} htmlFor="duration">
             Start Timestamp:{" "}
           </label>
-          <select name="duration" id="duration">
+          <select
+            onChange={(event) => setSelectedDuration(event.target.value)}
+            name="duration"
+            id="duration"
+          >
             <option value="5">last 5 min</option>
             <option value="10">last 10 min</option>
             <option value="15">last 15 min</option>
@@ -87,8 +92,11 @@ function Track() {
                 padding: "15px",
               }}
               onClick={() => {
+                console.log(selectedDuration);
                 setStartTimestamp(
-                  new Date(new Date() - 1000 * 60 * 15).toISOString()
+                  new Date(
+                    new Date() - 1000 * 60 * parseInt(selectedDuration)
+                  ).toISOString()
                 );
                 setEndTimestamp(new Date().toISOString());
               }}
