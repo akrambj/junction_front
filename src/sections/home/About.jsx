@@ -1,4 +1,4 @@
-const About = ({ image, anotherImage, title, texts, responsiveFlex }) => {
+const About = ({ image, anotherImage, title, texts, responsiveFlex, id }) => {
   const getFlexDirection = () => {
     if (responsiveFlex === "reverse") {
       return "flex-col md:flex-row-reverse";
@@ -10,9 +10,9 @@ const About = ({ image, anotherImage, title, texts, responsiveFlex }) => {
       <div
         className={`w-[95%] ${getFlexDirection()} mx-auto flex flex-col justify-center gap-10  sm:flex-row sm:items-center`}
       >
-        <div className="sm:w-[45%] sm:flex sm:flex-col sm:justify-center sm:gap-10">
-          <img src={anotherImage} alt="" />
-          <img src={image} className="lg:w-[70%] mx-auto" alt="" />
+        <div className="sm:w-[45%] sm:flex sm:flex-col sm:justify-center sm:gap-10 overflow-hidden">
+          <img id="cloud" src={anotherImage} alt="" />
+          <img src={image} id={id} className="lg:w-[70%] mx-auto" alt="" />
         </div>
         <div className="sm:w-[50%]">
           <h2 className="text-[#00B4D8] text-3xl">{title}</h2>

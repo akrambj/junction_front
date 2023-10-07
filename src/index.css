@@ -36,3 +36,66 @@ body {
 .overlayBgMap {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+#cloud {
+  animation-name: slide;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+#cloud:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-400px);
+  }
+
+  50% {
+    transform: translateX(80px);
+  }
+
+  100% {
+    transform: translateX(400px);
+  }
+}
+
+@keyframes rotateEarth {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+@keyframes rotateEarth {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(1turn);
+  }
+}
+
+#earth {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  animation: rotateEarth 20s linear infinite;
+}
+
+#earth-container {
+  perspective: 1200px;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  animation: rotateEarth 20s linear infinite;
+}
+
