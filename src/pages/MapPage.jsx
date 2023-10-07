@@ -20,6 +20,21 @@ const MapPage = () => {
   });
 
   useEffect(() => {
+    console.log("ttbdl");
+  }, [viewPort]);
+
+  useEffect(() => {
+    if (selectedDrone) {
+      setViewPort({
+        ...viewPort,
+        latitude: selectedDrone.lat,
+        longitude: selectedDrone.lon,
+        zoom: 12,
+      });
+    }
+  }, [selectedDrone]);
+
+  useEffect(() => {
     const getDrons = async () => {
       try {
         const response = await fetch("http://10.16.26.47:3001/uav-list");

@@ -2,14 +2,7 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-const DroneCard = ({
-  drone,
-  setMenu,
-  menu,
-  info,
-  setInfo,
-  setSelectedDrone,
-}) => {
+const DroneCard = ({ drone, setMenu, menu, setInfo, setSelectedDrone }) => {
   const [color, setColor] = useState("");
   const getRandomColor = () => {
     const r = Math.random() * 255;
@@ -26,7 +19,10 @@ const DroneCard = ({
   return (
     <div className="border-b-2 border-[#eee] p-2 hover:bg-gray-200 duration-300 transition-all lg:rounded-md">
       <div
-        onClick={() => setMenu((prev) => !prev)}
+        onClick={() => {
+          setMenu((prev) => !prev);
+          setSelectedDrone(drone);
+        }}
         className="flex items-center justify-between px-2 lg:cursor-pointer"
       >
         <div className="flex items-center gap-x-2">
@@ -63,9 +59,6 @@ const DroneCard = ({
       <div
         className={`hidden py-3 duration-300 transition-all lg:flex items-center justify-end gap-x-5`}
       >
-        <button className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2">
-          get location
-        </button>
         <button
           onClick={() => {
             setInfo(true);
@@ -81,9 +74,6 @@ const DroneCard = ({
           menu ? "opacity-100 " : "opacity-0"
         } py-3 duration-300 transition-all flex items-center justify-end gap-x-5 lg:hidden`}
       >
-        <button className="bg-[#00b4d8] text-white font-semibold px-4 py-1 rounded-md capitalize text-sm lg:px-2">
-          get location
-        </button>
         <button
           onClick={() => {
             setInfo(drone);
