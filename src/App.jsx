@@ -3,6 +3,7 @@ import SharedLayout from "./pages/SharedLayout";
 import Home from "./pages/Home";
 import MapPage from "./pages/MapPage";
 import Track from "./pages/Track";
+import Stream from "./components/map/Stream";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="map" element={<MapPage />} />
           <Route path="track" element={<Track />} />
+          <Route path="stream/:uav_id" element={<Stream uavNumber={1} />} />
         </Route>
       </Routes>
     </BrowserRouter>

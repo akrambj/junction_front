@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import OvenPlayer from "ovenplayer";
+import { useParams } from "react-router-dom";
 
-function Stream({ uavNumber }) {
+function Stream({}) {
+  const { uav_id } = useParams();
+  const uavNumber = uav_id;
+
   useEffect(() => {
     const player = OvenPlayer.create("player_id", {
       sources: [
