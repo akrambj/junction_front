@@ -1,20 +1,14 @@
 import { useState } from "react";
-import PopUpContent from "./PopUpContent";
 import DroneCard from "./DroneCard";
 import AddDronPopUp from "./AddDronPopUp";
 
-const Drones = ({ drons }) => {
-  const [selectedDrone, setSelectedDrone] = useState(null);
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+const Drones = ({ drons, setInfo, info }) => {
+  const [menu, setMenu] = useState(false);
   const [addDronPopUp, setAddDronPopUp] = useState(false);
-  const closePopUp = () => {
-    setIsPopUpOpen(false);
-    setSelectedDrone(null);
-  };
 
   return (
     <>
-      <div className=" bg-white py-2">
+      <div className="w-full h-[200px] absolute bottom-14 bg-white overflow-y-scroll">
         <div className="text-right px-6 py-2">
           <button
             onClick={() => setAddDronPopUp(true)}
@@ -22,6 +16,7 @@ const Drones = ({ drons }) => {
           >
             Add New UAV
           </button>
+
           {addDronPopUp && (
             <AddDronPopUp
               addDronPopUp={addDronPopUp}
@@ -29,34 +24,21 @@ const Drones = ({ drons }) => {
             />
           )}
         </div>
+
         <div className="flex flex-col items-start  px-4 gap-y-3  mt-5">
+          <h2 className="text-xl capitalize font-semibold text-[#00B4D8]">
+            list of all uavs:
+          </h2>
           {drons.map((drone) => {
             return (
-              <div
-                key={drone.uav_id}
-                className="w-full py-1"
-                onClick={() => {
-                  setSelectedDrone(drone);
-                  setIsPopUpOpen(true);
-                  console.log("clicked");
-                }}
-              >
-                <DroneCard drone={drone} />
-                {isPopUpOpen && selectedDrone && (
-                  <>
-                    <div
-                      className={`h-[60vh] bg-white py-5 z-40 rounded-t-[35px] fixed w-full left-0 bottom-0 ${
-                        isPopUpOpen ? "block" : "hidden"
-                      }`}
-                    >
-                      <PopUpContent
-                        selectedDrone={selectedDrone}
-                        closePopUp={closePopUp}
-                      />
-                    </div>
-                    <div className="fixed top-0 left-0 right-0 bottom-0 overlayBgMap"></div>
-                  </>
-                )}
+              <div key={drone.uav_id} className="w-full py-1">
+                <DroneCard
+                  drone={drone}
+                  setMenu={setMenu}
+                  menu={menu}
+                  setInfo={setInfo}
+                  info={info}
+                />
               </div>
             );
           })}

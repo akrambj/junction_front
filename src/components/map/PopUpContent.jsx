@@ -1,13 +1,13 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const PopUpContent = ({ selectedDrone, closePopUp }) => {
+const PopUpContent = ({ selectedDrone, setInfo }) => {
   return (
-    <div>
+    <div className="w-full absolute bottom-0  rounded-[25px]  h-[70vh] bg-white z-50 ">
       <FontAwesomeIcon
         className="absolute right-5 text-3xl top-5"
-        onClick={closePopUp}
         icon={faXmark}
+        onClick={() => setInfo(false)}
       />
       <h2 className="text-[#00B4D8] text-center text-2xl mt-7 font-bold">
         UAV Informations

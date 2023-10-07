@@ -18,10 +18,10 @@ const Header = () => {
 
   return (
     <header
-      className={`px-7 py-4 lg:px-10 w-full  lg:py-5 flex items-center justify-between   overflow-hidden z-40`}
+      className={`px-7 py-3 lg:px-10 w-full  lg:py-5 flex items-center justify-between overflow-hidden z-50`}
     >
       {isMenuOpen && (
-        <div className="absolute w-full h-[100vh] top-0 left-0 right-0 bottom-0 overlayBg"></div>
+        <div className="absolute w-full h-[100vh] top-0 left-0 right-0 bottom-0 overlayBg z-50"></div>
       )}
 
       <div className="logo">
@@ -39,7 +39,7 @@ const Header = () => {
           <ul
             className={`${
               isMenuOpen ? "opacity-100" : "opacity-0"
-            }  w-[65%]  h-[100vh] transition-all duration-300 bg-[#F8F8F8] rounded-tl-[25px] absolute right-0 top-0 text-right py-5 flex flex-col gap-y-5 xs:gap-7`}
+            }  w-[65%]  h-[100vh] transition-all duration-300 bg-[#F8F8F8] rounded-tl-[25px] absolute right-0 top-0 text-right py-5 z-50 flex flex-col gap-y-5 xs:gap-7`}
           >
             <li className="text-[#00B4D8] text-3xl px-2">
               <FontAwesomeIcon icon={faXmark} onClick={handleCloseMenu} />
